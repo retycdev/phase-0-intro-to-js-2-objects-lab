@@ -1,15 +1,14 @@
-require ( './helpers.js' );
+require('./helpers.js');
 
 describe('employees', function() {
+  let employee;  // Declare employee here
+
+  // Before each test, reset employee to its default state
+  beforeEach(function () {
+    employee = { name: 'Sam' }; // Initialize employee with default values
+  });
+
   describe('updateEmployeeWithKeyAndValue(employee, key, value)', function () {
-    beforeEach(function () {
-      for (const key in employee) {
-        delete employee[key];
-      }
-
-      employee.name = 'Sam';
-    });
-
     it('returns an employee with the original key value pairs and the new key value pair', function () {
       expect(updateEmployeeWithKeyAndValue(employee, 'streetAddress', '11 Broadway')).to.eql({
         name: 'Sam',
